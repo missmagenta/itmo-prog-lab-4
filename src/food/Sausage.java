@@ -1,15 +1,16 @@
-package abstractions.food;
+package food;
 
-public class Cutlet extends SpaceFood {
-    public Cutlet() {
-        super("cutlet");
+public class Sausage extends SpaceFood {
+    public Sausage() {
+        super("sausage", null, 0);
     }
 
     @Override
     public String toString() {
-        return "Cutlet{" +
+        return "Sausage{" +
                 "foodName='" + getFoodName() + '\'' +
                 ", grade='" + getFoodGrade() + '\'' +
                 '}';
     }
 }
+

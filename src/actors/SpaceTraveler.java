@@ -2,7 +2,7 @@ package actors;
 
 import abstractions.psychophysiology.MentalState;
 import interfaces.*;
-import abstractions.food.SpaceFood;
+import food.SpaceFood;
 import abstractions.*;
 
 import java.util.Objects;

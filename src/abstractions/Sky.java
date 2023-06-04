@@ -5,7 +5,7 @@ import actors.SpaceTraveler;
 
 public class Sky {
     public static class Moon {
-        private String color = "silver";
+        final private String color = "silver";
 
         public String getColor() {
             return color;
@@ -21,8 +21,8 @@ public class Sky {
     }
 
     public static class GlowingSphere {
-        private String description;
-        private String size;
+        final private String description;
+        final private String size;
 
         public GlowingSphere(String size, String description) {
             this.size = size;

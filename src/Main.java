@@ -1,9 +1,9 @@
 import abstractions.*;
 import abstractions.psychophysiology.MentalState;
 import abstractions.psychophysiology.State;
-import abstractions.food.Cutlet;
-import abstractions.food.Sausage;
-import abstractions.food.SpaceFood;
+import food.Cutlet;
+import food.Sausage;
+import food.SpaceFood;
 import actors.Character;
 import actors.Neznaika;
 import actors.Ponchik;
@@ -14,18 +14,17 @@ public class Main {
         SpaceTraveler traveler = new SpaceTraveler("Space Travelers", new MentalState());
         Ponchik ponchik = new Ponchik("Ponchik", new MentalState());
         Neznaika neznaika = new Neznaika("Neznaika", new MentalState());
-        Dialog dialog = new Dialog(ponchik, neznaika);
-        SpaceFood spaceDish = new SpaceFood("Space dish");
+        Dialog dialog = new Dialog();
+        SpaceFood spaceDish = new SpaceFood("Space dish", null, 0);
         SpaceFood sausage = new Sausage();
         SpaceFood cutlet = new Cutlet();
 
         traveler.setInWeightlessness(true);
 
-        dialog.addParticipant(ponchik);
+        dialog.addParticipant(ponchik, neznaika);
         dialog.say(ponchik, "Ну что ж, поскольку мы летим на Луну и назад все пути отрезаны, теперь у нас только одна задача:" +
                 "пробраться обратно в пищевой отсек и как следует позавтракать.", neznaika);
         dialog.setTopic(ponchik, "Breakfast in Space");
-        dialog.addParticipant(neznaika);
         dialog.say(neznaika, "Мы ведь только что завтракали.", ponchik);
         neznaika.contradict(ponchik);
         dialog.say(ponchik, "Так разве это был настоящий завтрак? " +

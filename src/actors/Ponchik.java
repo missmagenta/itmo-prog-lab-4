@@ -4,7 +4,7 @@ import abstractions.*;
 import abstractions.psychophysiology.Emotion;
 import abstractions.psychophysiology.MentalState;
 import abstractions.psychophysiology.State;
-import abstractions.food.SpaceFood;
+import food.SpaceFood;
 import exceptions.CharacterNotAwakeException;
 
 import java.util.Objects;

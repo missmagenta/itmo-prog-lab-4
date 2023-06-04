@@ -1,18 +1,20 @@
-package abstractions.food;
+package food;
 
 import exceptions.NegativeAmountOfConsumedPortions;
 
 import java.util.Objects;
 
 public class SpaceFood {
-    private String foodName;
+    final private String foodName;
     private FoodGrade grade = FoodGrade.UNKNOWN;
     private Integer totalPortions;
     private Integer consumedPortionsByFoodType;
     private static Integer totalConsumedPortions = 0;
 
-    public SpaceFood(String foodName) {
+    public SpaceFood(String foodName, Integer totalPortions, Integer consumedPortionsByFoodType) {
         this.foodName = foodName;
+        this.totalPortions = totalPortions;
+        this.consumedPortionsByFoodType = consumedPortionsByFoodType;
     }
 
     public String getFoodName() {

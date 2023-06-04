@@ -10,19 +10,12 @@ public class Dialog {
     private Conversationable speaker2;
     private String topic;
 
-    public Dialog(Conversationable speaker1, Conversationable speaker2) {
+    public void addParticipant(Conversationable speaker1, Conversationable speaker2) {
         this.speaker1 = speaker1;
         this.speaker2 = speaker2;
-    }
-
-    public void addParticipant(Conversationable speaker) throws
-            IllegalParticipantOfDialogException {
-        if ((speaker == speaker1) || (speaker == speaker2)) {
-            System.out.println(speaker.getName() + " entered the conversation");
-        } else {
-            throw new IllegalParticipantOfDialogException("This dialog already has 2 participants");
-        }
-        speaker.setConversation(this);
+        System.out.println(speaker1.getName() + " и " + speaker2.getName() + " entered the conversation");
+        speaker1.setConversation(this);
+        speaker2.setConversation(this);
     }
 
     public void say(Conversationable speaker, String message, Conversationable listener) throws
@@ -41,9 +34,9 @@ public class Dialog {
     }
 
     public void removeParticipant(Conversationable speaker) {
-        if (speaker1 != null && speaker1.equals(speaker)) {
+        if (speaker1 != null && speaker1 == speaker) {
             speaker1 = null;
-        } else if (speaker2 != null && speaker2.equals(speaker)) {
+        } else if (speaker2 != null && speaker2 == speaker) {
             speaker2 = null;
         } else {
             throw new IllegalParticipantOfDialogException(speaker.getName() + " was not a participant of this conversation");
