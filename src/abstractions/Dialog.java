@@ -10,7 +10,10 @@ public class Dialog {
     private Conversationable speaker2;
     private String topic;
 
-    public void addParticipant(Conversationable speaker1, Conversationable speaker2) {
+    public void addParticipant(Conversationable speaker1, Conversationable speaker2) throws IllegalParticipantOfDialogException {
+        if (this.speaker1 != null || this.speaker2 != null) {
+            throw new IllegalParticipantOfDialogException("This dialog already has 2 participants");
+        }
         this.speaker1 = speaker1;
         this.speaker2 = speaker2;
         System.out.println(speaker1.getName() + " и " + speaker2.getName() + " entered the conversation");
