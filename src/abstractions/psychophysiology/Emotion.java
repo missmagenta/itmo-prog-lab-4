@@ -1,4 +1,4 @@
-package abstractThings;
+package abstractions.psychophysiology;
 
 public enum Emotion {
     NORMAL("normal"),

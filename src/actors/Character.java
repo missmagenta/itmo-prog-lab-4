@@ -1,6 +1,6 @@
 package actors;
 
-import abstractThings.Location;
+import abstractions.Location;
 
 public abstract class Character {
     protected String name;

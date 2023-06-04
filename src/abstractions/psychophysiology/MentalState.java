@@ -1,4 +1,4 @@
-package abstractThings;
+package abstractions.psychophysiology;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package abstractThings;
+package abstractions;
 
 public enum Location {
     INITIAL("initial"),

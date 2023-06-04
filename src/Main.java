@@ -1,7 +1,9 @@
-import abstractThings.*;
-import abstractThings.food.Cutlet;
-import abstractThings.food.Sausage;
-import abstractThings.food.SpaceFood;
+import abstractions.*;
+import abstractions.psychophysiology.MentalState;
+import abstractions.psychophysiology.State;
+import abstractions.food.Cutlet;
+import abstractions.food.Sausage;
+import abstractions.food.SpaceFood;
 import actors.Character;
 import actors.Neznaika;
 import actors.Ponchik;
@@ -37,18 +39,18 @@ public class Main {
         dialog.removeParticipant(neznaika);
         dialog.removeParticipant(ponchik);
 
-        traveler.setLocation(Location.INITIAL);
+        traveler.getLocation();
         traveler.moveTo(Location.FOOD_COMPARTMENT);
 
         neznaika.setHungry(false);
         neznaika.setCurrentConsumableFood(cutlet);
-        cutlet.consumePortions(1);
+        cutlet.setConsumedPortionsByFoodType(1);
         neznaika.eat();
 
         ponchik.setHungry(true);
-        ponchik.revise(spaceDish);
+        ponchik.intendToRevise(spaceDish);
         ponchik.setCurrentConsumableFood(sausage);
-        sausage.consumePortions(10);
+        sausage.setConsumedPortionsByFoodType(10);
         ponchik.eat();
         ponchik.sleep();
 

@@ -1,8 +1,9 @@
 package actors;
 
+import abstractions.psychophysiology.MentalState;
 import interfaces.*;
-import abstractThings.food.SpaceFood;
-import abstractThings.*;
+import abstractions.food.SpaceFood;
+import abstractions.*;
 
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ public class SpaceTraveler extends Character implements Eatable, Conversationabl
     private boolean inWeightlessness;
     private Dialog conversation;
     private SpaceFood currentConsumableFood;
-    private Location location;
+    private Location location = Location.INITIAL;
     private MentalState mentalState;
 
 
@@ -61,9 +62,10 @@ public class SpaceTraveler extends Character implements Eatable, Conversationabl
                 currentConsumableFood.getFoodName());
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    @Override
+    public Location getLocation() {
         System.out.println(getName() + " were in " + location.getValue() + " location");
+        return location;
     }
 
     public void moveTo(Location location) {

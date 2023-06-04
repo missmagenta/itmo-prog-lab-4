@@ -1,4 +1,4 @@
-package abstractThings;
+package abstractions.psychophysiology;
 
 public enum State {
     SLEEP("asleep"),
@@ -10,7 +10,7 @@ public enum State {
         this.value = value;
     }
 
-    public String getState() {
+    public String getValue() {
         return value;
     }
 }

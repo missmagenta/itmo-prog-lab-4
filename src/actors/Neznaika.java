@@ -1,7 +1,8 @@
 package actors;
 
-import abstractThings.MentalState;
-import abstractThings.State;
+import abstractions.psychophysiology.MentalState;
+import abstractions.psychophysiology.State;
+import exceptions.CharacterNotAwakeException;
 
 import java.util.Objects;
 
@@ -16,9 +17,11 @@ public class Neznaika extends SpaceTraveler {
         this.state = state;
     }
 
-    public void contradict(Ponchik ponchik) {
+    public void contradict(Ponchik ponchik) throws CharacterNotAwakeException {
         if (state == State.AWAKE) {
             System.out.println(getName() + " возразил to " + ponchik.getName());
+        } else {
+            throw new CharacterNotAwakeException("Cannot invoke this method because " + getName() + " has state " + State.SLEEP);
         }
     }
 

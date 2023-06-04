@@ -1,7 +1,11 @@
 package actors;
 
-import abstractThings.*;
-import abstractThings.food.SpaceFood;
+import abstractions.*;
+import abstractions.psychophysiology.Emotion;
+import abstractions.psychophysiology.MentalState;
+import abstractions.psychophysiology.State;
+import abstractions.food.SpaceFood;
+import exceptions.CharacterNotAwakeException;
 
 import java.util.Objects;
 
@@ -22,20 +26,22 @@ public class Ponchik extends SpaceTraveler {
                 getCurrentConsumableFood().getFoodName() + " во рту");
     }
 
-    public void revise(SpaceFood spaceFood) {
+    public void intendToRevise(SpaceFood spaceFood) throws CharacterNotAwakeException {
         if (state == State.AWAKE) {
             System.out.println(getName() + " должен произвести в " + Location.FOOD_COMPARTMENT.getValue() +
                     " ревизию и проверить качество всех " + spaceFood.getFoodName() +
                     ", которые имеют оценку " + spaceFood.getFoodGrade().getValue());
         } else {
-            System.out.println(getName() + " is not able to revise food because he is sleeping");
+            throw new CharacterNotAwakeException("Cannot invoke this method because " + getName() + " has state " + State.SLEEP);
         }
     }
 
-    public void reactTo(Sky.GlowingSphere glowingSphere) {
+    public void reactTo(Sky.GlowingSphere glowingSphere) throws CharacterNotAwakeException {
         if (state == State.AWAKE) {
             getMentalState().setEmotion(Emotion.SHOCKED);
             System.out.println(glowingSphere.getSize() + " " + glowingSphere.getDescription() + " висел над ракетой, заслоняя небо со звездами");
+        } else {
+            throw new CharacterNotAwakeException("Cannot invoke this method because " + getName() + " has state " + State.SLEEP);
         }
     }
 

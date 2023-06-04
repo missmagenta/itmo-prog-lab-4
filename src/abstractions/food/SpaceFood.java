@@ -1,4 +1,4 @@
-package abstractThings.food;
+package abstractions.food;
 
 import exceptions.NegativeAmountOfConsumedPortions;
 
@@ -8,8 +8,8 @@ public class SpaceFood {
     private String foodName;
     private FoodGrade grade = FoodGrade.UNKNOWN;
     private Integer totalPortions;
-    private int consumedPortionsByFoodType;
-    private static int totalConsumedPortions;
+    private Integer consumedPortionsByFoodType;
+    private static Integer totalConsumedPortions = 0;
 
     public SpaceFood(String foodName) {
         this.foodName = foodName;
@@ -29,14 +29,6 @@ public class SpaceFood {
 
     public int getConsumedPortionsByFoodType() {
         return consumedPortionsByFoodType;
-    }
-
-    public void consumePortions(int consumedPortionsByFoodType) {
-        try {
-            setConsumedPortionsByFoodType(consumedPortionsByFoodType);
-        } catch (NegativeAmountOfConsumedPortions e) {
-            System.out.println("Not enough portions of space food");
-        }
     }
 
     public FoodGrade getFoodGrade() {

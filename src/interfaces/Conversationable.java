@@ -1,6 +1,6 @@
 package interfaces;
 
-import abstractThings.Dialog;
+import abstractions.Dialog;
 
 public interface Conversationable {
     Dialog getConversation();

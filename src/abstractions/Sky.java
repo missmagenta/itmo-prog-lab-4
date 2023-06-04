@@ -1,6 +1,7 @@
-package abstractThings;
+package abstractions;
 
-import actors.Neznaika;
+import abstractions.psychophysiology.Emotion;
+import actors.SpaceTraveler;
 
 public class Sky {
     public static class Moon {
@@ -10,12 +11,12 @@ public class Sky {
             return color;
         }
 
-        public static void attract(Neznaika neznaika) {
-            neznaika.getMentalState().setEmotion(Emotion.ENCHANTED);
-            System.out.println("Прошло два или три часа, а " + neznaika.getName() + " все смотрел на " +
+        public static void attract(SpaceTraveler spaceTraveler) {
+            spaceTraveler.getMentalState().setEmotion(Emotion.ENCHANTED);
+            System.out.println("Прошло два или три часа, а " + spaceTraveler.getName() + " все смотрел на " +
                     new Moon().getColor() + " Луну и никак не мог от нее оторваться. " +
-                    "Луна словно притягивала к себе его взоры. " + neznaika.getName() + " был " +
-                    neznaika.getMentalState().getEmotion().getValue());
+                    "Луна словно притягивала к себе его взоры. " + spaceTraveler.getName() + " был " +
+                    spaceTraveler.getMentalState().getEmotion().getValue());
         }
     }
 

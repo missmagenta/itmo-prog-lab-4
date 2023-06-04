@@ -1,4 +1,4 @@
-package abstractThings.food;
+package abstractions.food;
 
 public enum FoodGrade {
     UNKNOWN("unknown"),

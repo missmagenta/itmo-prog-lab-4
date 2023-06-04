@@ -1,4 +1,4 @@
-package abstractThings;
+package abstractions;
 
 import exceptions.IllegalParticipantOfDialogException;
 import interfaces.Conversationable;
@@ -15,20 +15,20 @@ public class Dialog {
         this.speaker2 = speaker2;
     }
 
-    public void addParticipant(Conversationable speaker) {
+    public void addParticipant(Conversationable speaker) throws
+            IllegalParticipantOfDialogException {
         if ((speaker == speaker1) || (speaker == speaker2)) {
             System.out.println(speaker.getName() + " entered the conversation");
         } else {
-            System.out.println("This dialog already has 2 participants");
-            return;
+            throw new IllegalParticipantOfDialogException("This dialog already has 2 participants");
         }
         speaker.setConversation(this);
     }
 
     public void say(Conversationable speaker, String message, Conversationable listener) throws
             IllegalParticipantOfDialogException {
-        boolean isSpeakerParticipant = (speaker.equals(speaker1) || speaker.equals(speaker2));
-        boolean isListenerParticipant = (listener.equals(speaker1) || listener.equals(speaker2));
+        boolean isSpeakerParticipant = (speaker == speaker1) || (speaker == speaker2);
+        boolean isListenerParticipant = (listener == speaker1) || (listener == speaker2);
         if (isSpeakerParticipant && isListenerParticipant) {
             System.out.println(speaker.getName() + ": " + message);
         } else if (isSpeakerParticipant || isListenerParticipant) {
@@ -46,8 +46,7 @@ public class Dialog {
         } else if (speaker2 != null && speaker2.equals(speaker)) {
             speaker2 = null;
         } else {
-            System.out.println(speaker.getName() + " was not a participant of this conversation");
-            return;
+            throw new IllegalParticipantOfDialogException(speaker.getName() + " was not a participant of this conversation");
         }
         speaker.setConversation(null);
         System.out.println(speaker.getName() + " left the conversation");
